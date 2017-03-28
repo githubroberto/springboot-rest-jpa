@@ -1,5 +1,6 @@
 package hemma.springboot.stock.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,6 +15,7 @@ import static javax.persistence.GenerationType.AUTO;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Stock {
     @Id
