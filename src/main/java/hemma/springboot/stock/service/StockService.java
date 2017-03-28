@@ -10,5 +10,5 @@ public interface StockService {
 
     Stock stock(Integer stockId);
 
-    boolean save(Stock stock);
+    Stock save(Stock stock);
 }

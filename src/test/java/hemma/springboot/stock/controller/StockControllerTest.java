@@ -80,7 +80,7 @@ public class StockControllerTest {
         String symbol = "SS";
         BigDecimal price = new BigDecimal(97.05).setScale(2, BigDecimal.ROUND_CEILING);
         Stock stock = new Stock(id, companyName, symbol, price);
-        when(stockService.save(stock)).thenReturn(true);
+        when(stockService.save(stock)).thenReturn(stock);
         mvc.perform(get("/stocks/add?id=" + id + "&companyName=" + companyName + "&symbol=" + symbol + "&price=" + price)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
