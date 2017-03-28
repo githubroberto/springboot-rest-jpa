@@ -5,8 +5,10 @@ import hemma.springboot.stock.repository.StockRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 @Service
 public class StockServiceImpl implements StockService {
@@ -18,18 +20,21 @@ public class StockServiceImpl implements StockService {
     }
 
     @Override
-    public Collection<Stock> stocks() {
+    public Collection<Stock> getStocks() {
         try {
-            return stockRepository.stocks();
+            List<Stock> stockList = new ArrayList<>();
+            Iterable<Stock> stockIterable = stockRepository.findAll();
+            stockIterable.forEach(stockList::add);
+            return stockList;
         } catch (Exception exception) {
             return Collections.emptyList();
         }
     }
 
     @Override
-    public Stock stock(Integer stockId) {
+    public Stock getStock(Integer stockId) {
         try {
-            return stockRepository.stock(stockId);
+            return stockRepository.findOne(stockId);
         } catch (Exception exception) {
             return null;
         }

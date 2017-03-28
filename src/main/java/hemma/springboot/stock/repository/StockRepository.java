@@ -6,7 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Collection;
 
 public interface StockRepository extends CrudRepository<Stock, Integer> {
-    Collection<Stock> stocks() throws Exception;
-
-    Stock stock(Integer stockId) throws Exception;
+//    Collection<Stock> getStocks() throws Exception;
+//
+//    Stock getStock(Integer id) throws Exception;
 }

@@ -31,9 +31,9 @@ public class StockController {
     }
 
     @RequestMapping(value = {""}, method = RequestMethod.GET)
-    public APIResponse<StocksResponse> stocks() {
+    public APIResponse<StocksResponse> getStocks() {
         LOGGER.info("Requesting stocks");
-        final Collection<Stock> stocks = stockService.stocks();
+        final Collection<Stock> stocks = stockService.getStocks();
         StocksResponse stocksResponse = new StocksResponse(stocks);
         LOGGER.info("Found stocks: " + stocksResponse.size());
         return APIResponse.<StocksResponse>apiResponse()
@@ -44,9 +44,9 @@ public class StockController {
     }
 
     @RequestMapping(value = {"/{stockId}"}, method = RequestMethod.GET)
-    public APIResponse<StockResponse> stock(@PathVariable("stockId") @NotNull @Min(1) Integer stockId) {
+    public APIResponse<StockResponse> getStock(@PathVariable("stockId") @NotNull @Min(1) Integer stockId) {
         LOGGER.info("Requesting stock");
-        final Stock stock = stockService.stock(stockId);
+        final Stock stock = stockService.getStock(stockId);
         StockResponse stockResponse = new StockResponse(stock);
         LOGGER.info("Found stock: " + stockResponse);
         return APIResponse.<StockResponse>apiResponse()

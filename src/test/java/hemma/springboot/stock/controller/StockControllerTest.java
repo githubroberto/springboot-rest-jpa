@@ -44,7 +44,7 @@ public class StockControllerTest {
                 new Stock(1, "A", "SymbolA", new BigDecimal(11.00)),
                 new Stock(2, "B", "SymbolB", new BigDecimal(21.00)),
                 new Stock(3, "C", "SymbolC", new BigDecimal(31.00)));
-        when(stockService.stocks()).thenReturn(stocks);
+        when(stockService.getStocks()).thenReturn(stocks);
         mvc.perform(get("/stocks")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -59,7 +59,7 @@ public class StockControllerTest {
     @Test
     public void should_return_one_stock_by_id() throws Exception {
         BigDecimal price = new BigDecimal(56.05).setScale(2, BigDecimal.ROUND_CEILING);
-        when(stockService.stock(1)).thenReturn(new Stock(1, "VMWare", "VMW", price));
+        when(stockService.getStock(1)).thenReturn(new Stock(1, "VMWare", "VMW", price));
         mvc.perform(get("/stocks/1")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())

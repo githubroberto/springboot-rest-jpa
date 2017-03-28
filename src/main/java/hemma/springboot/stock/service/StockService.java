@@ -6,9 +6,9 @@ import java.util.Collection;
 
 public interface StockService {
 
-    Collection<Stock> stocks();
+    Collection<Stock> getStocks();
 
-    Stock stock(Integer stockId);
+    Stock getStock(Integer stockId);
 
     Stock save(Stock stock);
 }
